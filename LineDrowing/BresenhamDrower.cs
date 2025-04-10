@@ -12,7 +12,7 @@ namespace LineDrowing
     {
         public static void DrowBresenham()
         {
-            int value = 10;
+            int value = 15;
             Point point1 = new Point(10 + value, 3 + value);
             Point point2 = new Point(10 + value, 40 + value);
             Point point3 = new Point(20 + value, 20 + value);
@@ -28,11 +28,11 @@ namespace LineDrowing
             Bresenham.DrowLine(point3, point5);
             Bresenham.DrowLine(point4, point5);
 
-            Utility.PutPointWithSymbol(point1, "p1");
-            Utility.PutPointWithSymbol(point2, "p2");
-            Utility.PutPointWithSymbol(point3, "p3");
-            Utility.PutPointWithSymbol(point4, "p4");
-            Utility.PutPointWithSymbol(point5, "p5");
+            Utility.PutPointWithSymbol(point1, "p11");
+            Utility.PutPointWithSymbol(point2, "p22");
+            Utility.PutPointWithSymbol(point3, "p33");
+            Utility.PutPointWithSymbol(point4, "p44");
+            Utility.PutPointWithSymbol(point5, "p55");
         }
     }
 }

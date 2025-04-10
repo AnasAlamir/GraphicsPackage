@@ -6,9 +6,9 @@ namespace LineDrowing
     {
         static void Main(string[] args)
         {
+            //need to be drown from middle of the screen
             DDADrower.DrowDDA();
-            //bresenham only work with one octant
-            //BresenhamDrower.DrowBresenham();
+            BresenhamDrower.DrowBresenham();
         }
     }
 }
