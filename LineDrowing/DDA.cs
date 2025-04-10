@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using System.Security.Cryptography;
 
-namespace LineDrowing
+namespace GraphicsPackage
 {
     public class DDA
     {

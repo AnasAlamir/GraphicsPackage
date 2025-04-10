@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace LineDrowing
+namespace GraphicsPackage
 {
     public class Utility
     {
