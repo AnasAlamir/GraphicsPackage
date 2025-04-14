@@ -1,17 +1,22 @@
-using System.Drawing;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace GraphicsPackage
+namespace GUI
 {
-    public class MidPointCircle
+    public class Elipse
     {
-        private static void PutPoint(int x, int y)
+        private Graphics graphics;
+        private Point centerOfPanel;
+        private void PutPoint(int x, int y)
         {
-            Console.SetCursorPosition(x, y);
-            Console.Write('*'); // Plotting a point with '*'
+            this.graphics.FillRectangle(Brushes.Blue, (((x) * 5) + this.centerOfPanel.X), ((y * -5) + this.centerOfPanel.Y), 5, 5);
         }
 
         // Function to plot the Circle points in all four quadrants
-        private static void CirclePoints(int x, int y, Point center)
+        private void ElipsePoints(int x, int y, Point center)
         {
             PutPoint(center.X + x, center.Y + y); // 1st quadrant
             PutPoint(center.X - x, center.Y + y); // 2nd quadrant
@@ -20,8 +25,10 @@ namespace GraphicsPackage
         }
 
         // Midpoint Circle Algorithm to draw an Circle
-        public static void DrawCircle(Point center, int a, int b)
+        public void DrawElipse(Graphics graphics,Point center, int a, int b, Point centerOfPanal)
         {
+            this.graphics = graphics;
+            this.centerOfPanel = centerOfPanal;
             int x = 0,
                 y = b;
             int aSquared = a * a;
@@ -35,7 +42,7 @@ namespace GraphicsPackage
             // Region 1: when the Circle is wider along the X-axis (a > b)
             while (twoBSquared * x <= twoASquared * y)
             {
-                CirclePoints(x, y, center); // Plot the points
+                ElipsePoints(x, y, center); // Plot the points
 
                 x++;
 
@@ -53,7 +60,7 @@ namespace GraphicsPackage
 
             while (y >= 0)
             {
-                CirclePoints(x, y, center); // Plot the points
+                ElipsePoints(x, y, center); // Plot the points
 
                 y--;
 

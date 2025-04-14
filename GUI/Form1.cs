@@ -143,6 +143,97 @@ namespace GUI
                 g.Dispose();
             }
         }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox7_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            panel1.Refresh();
+            int centerX = panel1.ClientRectangle.Right / 2;
+            int centerY = panel1.ClientRectangle.Height / 2;
+            Point centerOfPanal = new Point(centerX, centerY);
+            Graphics g = panel1.CreateGraphics();
+            try
+            {
+                int radius = Convert.ToInt32(textBox7.Text);
+                int xCenter = Convert.ToInt32(textBox5.Text);
+                int yCenter = Convert.ToInt32(textBox6.Text);
+                Point center = new Point(xCenter, yCenter);
+                Circle circle = new Circle();
+                circle.DrawCircle(g, radius, center, centerOfPanal);
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Please enter valid integer values for coordinates.");
+            }
+            catch (OverflowException)
+            {
+                MessageBox.Show("The entered values are too large.");
+            }
+            finally
+            {
+                g.Dispose();
+            }
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox8_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            panel1.Refresh();
+            int centerX = panel1.ClientRectangle.Right / 2;
+            int centerY = panel1.ClientRectangle.Height / 2;
+            Point centerOfPanal = new Point(centerX, centerY);
+            Graphics g = panel1.CreateGraphics();
+            try
+            {
+                int r1 = Convert.ToInt32(textBox8.Text);
+                int r2 = Convert.ToInt32(textBox11.Text);
+                int xCenter = Convert.ToInt32(textBox9.Text);
+                int yCenter = Convert.ToInt32(textBox10.Text);
+                Point center = new Point(xCenter, yCenter);
+                Elipse elipse = new Elipse();
+                elipse.DrawElipse(g, center, r1, r2, centerOfPanal);
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Please enter valid integer values for coordinates.");
+            }
+            catch (OverflowException)
+            {
+                MessageBox.Show("The entered values are too large.");
+            }
+            finally
+            {
+                g.Dispose();
+            }
+        }
     }
 
 }

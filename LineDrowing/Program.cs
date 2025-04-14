@@ -12,8 +12,8 @@ namespace GraphicsPackage
 
             BresenhamDrower.DrowBresenham();
 
-            Elipse.DrawElipse(10, new Point(20, 10));
-            MidPointCircle.DrawCircle(new Point(20, 10), 10, 5);
+            Elipse.DrawElipse(new Point(20, 10), 5, 5);
+            Circle.DrawCircle(10, new Point(20, 20));
 
             Point point = new Point(20, 10);
             Utility.PutPointWithSymbol(point, "O");
@@ -33,6 +33,7 @@ namespace GraphicsPackage
             //give error as it need the start to be drown from middle of the screen
             //Point reflectedPoint = Reflection.ReflectPointOverOrigin(point);
             //Utility.PutPointWithSymbol(reflectedPoint, "Rf");
+
 
             Console.SetCursorPosition(0, 60);
         }
