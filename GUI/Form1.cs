@@ -218,8 +218,8 @@ namespace GUI
                 int xCenter = Convert.ToInt32(textBox9.Text);
                 int yCenter = Convert.ToInt32(textBox10.Text);
                 Point center = new Point(xCenter, yCenter);
-                Elipse elipse = new Elipse();
-                elipse.DrawElipse(g, center, r1, r2, centerOfPanal);
+                Ellipse elipse = new Ellipse();
+                elipse.DrawEllipse(g, center, r1, r2, centerOfPanal);
             }
             catch (FormatException)
             {

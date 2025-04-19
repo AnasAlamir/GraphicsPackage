@@ -12,7 +12,7 @@ namespace GraphicsPackage
 
             BresenhamDrower.DrowBresenham();
 
-            Elipse.DrawElipse(new Point(20, 10), 5, 5);
+            Ellipse.DrawEllipse(new Point(20, 10), 5, 5);
             Circle.DrawCircle(10, new Point(20, 20));
 
             Point point = new Point(20, 10);
@@ -21,8 +21,8 @@ namespace GraphicsPackage
             Point scaledPoint = Scale.ScalePoint(point, 2, 3);
             Utility.PutPointWithSymbol(scaledPoint, "S");
             //not sure if this is correct
-            Point rotatedPoint = Rotation.RotatePoint(point, Math.PI / -6);
-            Utility.PutPointWithSymbol(rotatedPoint, "R");
+            var rotatedPoint = Rotation.RotatePoint(point.X,point.Y, Math.PI / -6);
+            Utility.PutPointWithSymbol(new Point((int)rotatedPoint.x,(int)rotatedPoint.y), "R");
 
             Point transelatedPoint = Translation.TranslatePoint(point, 2, 3);
             Utility.PutPointWithSymbol(transelatedPoint, "T");

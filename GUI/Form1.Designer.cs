@@ -59,10 +59,10 @@
             button4 = new Button();
             groupBox9 = new GroupBox();
             label9 = new Label();
+            textBox10 = new TextBox();
             textBox9 = new TextBox();
             groupBox10 = new GroupBox();
             label10 = new Label();
-            textBox10 = new TextBox();
             groupBox11 = new GroupBox();
             label11 = new Label();
             textBox11 = new TextBox();
@@ -355,7 +355,7 @@
             button4.Name = "button4";
             button4.Size = new Size(75, 23);
             button4.TabIndex = 15;
-            button4.Text = "Elipse";
+            button4.Text = "Ellipse";
             button4.UseVisualStyleBackColor = true;
             button4.Click += button4_Click;
             // 
@@ -378,6 +378,13 @@
             label9.Size = new Size(48, 15);
             label9.TabIndex = 5;
             label9.Text = "yCenter";
+            // 
+            // textBox10
+            // 
+            textBox10.Location = new Point(59, 19);
+            textBox10.Name = "textBox10";
+            textBox10.Size = new Size(32, 23);
+            textBox10.TabIndex = 6;
             // 
             // textBox9
             // 
@@ -406,13 +413,6 @@
             label10.Size = new Size(48, 15);
             label10.TabIndex = 5;
             label10.Text = "xCenter";
-            // 
-            // textBox10
-            // 
-            textBox10.Location = new Point(59, 19);
-            textBox10.Name = "textBox10";
-            textBox10.Size = new Size(32, 23);
-            textBox10.TabIndex = 6;
             // 
             // groupBox11
             // 
