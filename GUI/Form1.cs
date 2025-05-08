@@ -1,7 +1,11 @@
 namespace GUI
 {
     public partial class Form1 : Form
+
     {
+        List<PointF> originalShape = new List<PointF>();
+        List<PointF> transformedShape = new List<PointF>();
+
         public Form1()
         {
             InitializeComponent();
@@ -75,13 +79,25 @@ namespace GUI
             int centerX = panel1.ClientRectangle.Right / 2;
             int centerY = panel1.ClientRectangle.Height / 2;
 
-            // Draw X-axis
+            // Draw axes
             DDA.DrawLineAxis(g, new Point(0, centerY), new Point(panel1.ClientSize.Width, centerY));
-
-            // Draw Y-axis
             DDA.DrawLineAxis(g, new Point(centerX, 0), new Point(centerX, panel1.ClientSize.Height));
 
+            // Draw the transformed shape if available
+            if (transformedShape.Count == 4)
+            {
+                Pen pen = Pens.Black;
+                for (int i = 0; i < 4; i++)
+                {
+                    PointF start = transformedShape[i];
+                    PointF end = transformedShape[(i + 1) % 4];
+                    Point s = new Point((int)(centerX + start.X), (int)(centerY - start.Y));
+                    Point eP = new Point((int)(centerX + end.X), (int)(centerY - end.Y));
+                    g.DrawLine(pen, s, eP);
+                }
+            }
         }
+
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -233,7 +249,206 @@ namespace GUI
             {
                 g.Dispose();
             }
+
+        }
+        private void label12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label13_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label23_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                float shx = float.Parse(textBox23.Text.Trim()); // X shear input
+                transformedShape = Transform2D.ShearX(transformedShape, shx);
+                panel1.Invalidate();
+            }
+            catch
+            {
+                MessageBox.Show("Enter a valid shear X value.");
+            }
+        }
+
+
+        private void textBox9_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox10_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox11_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox23_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox24_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void textBox12_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox16_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            originalShape.Clear();
+            transformedShape.Clear();
+
+            try
+            {
+                // Read all 8 values with clear parsing
+                float x1 = float.Parse(textBox12.Text.Trim());
+                float y1 = float.Parse(textBox16.Text.Trim());
+                float x2 = float.Parse(textBox13.Text.Trim());
+                float y2 = float.Parse(textBox17.Text.Trim());
+                float x3 = float.Parse(textBox14.Text.Trim());
+                float y3 = float.Parse(textBox18.Text.Trim());
+                float x4 = float.Parse(textBox15.Text.Trim());
+                float y4 = float.Parse(textBox19.Text.Trim());
+
+                // Add points
+                originalShape.Add(new PointF(x1, y1));
+                originalShape.Add(new PointF(x2, y2));
+                originalShape.Add(new PointF(x3, y3));
+                originalShape.Add(new PointF(x4, y4));
+
+                foreach (PointF pt in originalShape)
+                    transformedShape.Add(new PointF(pt.X, pt.Y));
+
+                panel1.Invalidate(); // redraw
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Invalid format: Use only numbers. If using decimals, use a dot (e.g. 12.5)");
+            }
+            catch (OverflowException)
+            {
+                MessageBox.Show("Entered value is too large.");
+            }
+        }
+
+
+
+        private void pictureBox1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                float dx = float.Parse(textBox20.Text);
+                float dy = float.Parse(textBox21.Text);
+
+                transformedShape = Transform2D.Translate(transformedShape, dx, dy);
+                panel1.Invalidate();
+            }
+            catch
+            {
+                MessageBox.Show("Enter valid values for translation.");
+            }
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                float sx = float.Parse(textBox20.Text.Trim()); // reuse translation X box
+                float sy = float.Parse(textBox21.Text.Trim()); // reuse translation Y box
+
+                transformedShape = Transform2D.Scale(transformedShape, sx, sy);
+
+                panel1.Invalidate(); // redraw
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Please enter valid scaling values.");
+            }
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                float angle = float.Parse(textBox22.Text.Trim()); // angle in degrees
+                transformedShape = Transform2D.Rotate(transformedShape, angle);
+                panel1.Invalidate(); // redraw
+            }
+            catch
+            {
+                MessageBox.Show("Please enter a valid angle.");
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            transformedShape = Transform2D.Reflect(transformedShape, "X");
+            panel1.Invalidate();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            transformedShape = Transform2D.Reflect(transformedShape, "Y");
+            panel1.Invalidate();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            transformedShape = Transform2D.Reflect(transformedShape, "Origin");
+            panel1.Invalidate();
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                float shy = float.Parse(textBox24.Text.Trim()); // Y shear input
+                transformedShape = Transform2D.ShearY(transformedShape, shy);
+                panel1.Invalidate();
+            }
+            catch
+            {
+                MessageBox.Show("Enter a valid shear Y value.");
+            }
+        }
+
+        private void label24_Click(object sender, EventArgs e)
+        {
+
         }
     }
 
 }
+
+    
+
+
